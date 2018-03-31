@@ -1,0 +1,20 @@
+<h1>Games</h1>
+<table class="table table-striped">
+  <tr>
+    <th>Game</th>
+    <th>Users</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+<% @games.each do |game| %>
+  <tr>
+    <td><%= game.id %></td>
+    <td><%= game.users.pluck(:name).join(", ") %></td>
+    <td><%= game.status %></td>
+    <td><%= link_to "View", game_path(game.id) %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to "Add New Game", new_game_path %>
+<pre>
+</pre>

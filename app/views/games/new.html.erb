@@ -1,0 +1,15 @@
+<h1>Add new Game</h1>
+<%= form_for(@game) do |f| %>
+   <p>
+      Select users
+   </p>
+   <p>
+     <%= f.select(:user_ids, User.all.collect {|u| [ u.name, u.id ] },
+                                  { :prompt => "Please select"},
+                                   { :multiple => true, :size => 10 }
+                                 ) %>
+   </p>
+   <p>
+      <%= f.submit %>
+   </p>
+<% end %>
