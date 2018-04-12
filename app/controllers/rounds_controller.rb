@@ -15,7 +15,6 @@ class RoundsController < ApplicationController
 
   def create
      @round = @game.rounds.build(round_params)
-     #debug(params[:scores])
 
      if @round.save
        redirect_to @game

@@ -1,13 +1,13 @@
 <h1>Game <%= @game.id %></h1>
 <p>Game details</p>
-<p>Users</p>
+
 
 
 <table class="table table-striped">
   <tr>
     <th>Round</th>
-    <% @game.users.each do |user| %>
-      <th id="round-X"><%= user.name %></th>
+    <% @game.users.each do |u| %>
+      <th><%= u.name %></th>
     <% end %>
   </tr>
     <% @game.rounds.each.with_index do |r,i| %>
@@ -18,6 +18,14 @@
       <% end %>
     </tr>
     <% end %>
+    <tr>
+      <td>Total</td>
+
+        <% @game.users.each do |u| %>
+          <td><%= @game.scores.where(user: u).pluck(:value).sum %></td>
+        <% end %>
+
+    </tr>
 </table>
 
 <%= link_to "Add a Round", new_game_round_path(@game.id) %>
