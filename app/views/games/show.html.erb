@@ -18,14 +18,14 @@
       <% end %>
     </tr>
     <% end %>
+    <% if @game.rounds.any? %>
     <tr>
       <td>Total</td>
-
         <% @game.users.each do |u| %>
           <td><%= @game.scores.where(user: u).pluck(:value).sum %></td>
         <% end %>
-
     </tr>
+    <% end %>
 </table>
 
 <%= link_to "Add a Round", new_game_round_path(@game.id) %>
