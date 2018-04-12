@@ -16,6 +16,7 @@ class GamesController < ApplicationController
      @game = Game.new(game_params)
      @game.status = "New"
      if @game.save
+       flash[:notice] = "Game created!"
        redirect_to @game
     else
       byebug
