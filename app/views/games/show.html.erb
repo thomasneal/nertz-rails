@@ -1,9 +1,23 @@
 <h1>Game <%= @game.id %></h1>
 <p>Game details</p>
+<p>Users</p>
+
 
 <table class="table table-striped">
   <tr>
-    <th>Number</th>
-    <th>Users</th>
+    <th>Round</th>
+    <% @game.users.each do |user| %>
+      <th id="round-X"><%= user.name %></th>
+    <% end %>
   </tr>
+    <% @game.rounds.each.with_index do |r,i| %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <% @game.users.each do |u| %>
+        <td><%= r.scores.find_by(user: u).value %></td>
+      <% end %>
+    </tr>
+    <% end %>
 </table>
+
+<%= link_to "Add a Round", new_game_round_path(@game.id) %>

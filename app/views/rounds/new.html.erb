@@ -1,0 +1,18 @@
+<h1>Add new Round</h1>
+<%= form_for [@game, @round] do |f| %>
+  <% @game.users.each do |u| %>
+    <p>
+      <%= u.name %>
+      <%= f.fields_for :scores, @round.scores.build do |s| %>
+        <%= s.number_field :value, {min: -52, max: 52} %>
+        <%= s.hidden_field :user_id, value: u.id %>
+      <% end %>
+
+    </p>
+
+  <% end %>
+   <p>
+      <%= f.submit %>
+   </p>
+<% end %>
+<%= debug(@game.users) %>
