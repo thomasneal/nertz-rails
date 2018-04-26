@@ -19,7 +19,7 @@ class GamesController < ApplicationController
        flash[:notice] = "Game created!"
        redirect_to @game
     else
-      byebug
+      render :new
     end
    end
 
@@ -29,7 +29,7 @@ class GamesController < ApplicationController
      if @game.save
        redirect_to @game
     else
-      byebug
+      render :new
     end
    end
 
