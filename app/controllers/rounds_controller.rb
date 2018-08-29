@@ -25,6 +25,10 @@ class RoundsController < ApplicationController
 
 
      if @round.save
+       if @game.isFinished
+         @game.status = "Finished"
+         @game.save
+       end
        redirect_to @game
     else
       byebug

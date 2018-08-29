@@ -4,3 +4,8 @@
 .badge-secondary.playing {
   background-color: #28a745;
 }
+
+tr.finished:nth-child(odd)>td {
+   background-color: black;
+   color: white;
+ }
