@@ -14,7 +14,15 @@ class RoundsController < ApplicationController
   end
 
   def create
-     @round = @game.rounds.build(round_params)
+    # Check if game has rounds in order to update game status
+    if @game.rounds.count > 0
+      # puts "Game has rounds."
+    else
+      @game.update_attribute(:status, "Playing")
+    end
+
+    @round = @game.rounds.build(round_params)
+
 
      if @round.save
        redirect_to @game

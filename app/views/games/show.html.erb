@@ -1,4 +1,9 @@
 <h1>Game <%= @game.id %></h1>
+<p class="text-right">
+  <span class="badge badge-secondary <%= @game.status.downcase %>">
+    <%= @game.status %>
+  </span>
+</p>
 <p>Game details</p>
 
 
