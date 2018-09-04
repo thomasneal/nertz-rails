@@ -14,6 +14,7 @@
     <% @game.users.each do |u| %>
       <th><%= u.name %></th>
     <% end %>
+    <th>Actions</th>
   </tr>
     <% @game.rounds.each.with_index do |r,i| %>
     <tr>
@@ -21,6 +22,10 @@
       <% @game.users.each do |u| %>
         <td><%= r.scores.find_by(user: u).value %></td>
       <% end %>
+      <td><%= link_to "X", game_round_path(@game.id, r.id),
+        method: :delete,
+        data: { confirm: 'Are you sure you want to delete this round?' }
+        %></td>
     </tr>
     <% end %>
     <% if @game.rounds.any? %>
@@ -29,6 +34,7 @@
         <% @game.users.each do |u| %>
           <td><%= @game.scores.where(user: u).pluck(:value).sum %></td>
         <% end %>
+        <td></td>
     </tr>
     <% end %>
 </table>
