@@ -24,7 +24,8 @@
       <% end %>
       <td><%= link_to "X", game_round_path(@game.id, r.id),
         method: :delete,
-        data: { confirm: 'Are you sure you want to delete this round?' }
+        data: { confirm: 'Are you sure you want to delete this round?' },
+        class: "btn btn-outline-danger"
         %></td>
     </tr>
     <% end %>
@@ -42,3 +43,9 @@
 <% if @game.status != "Finished" %>
 <%= link_to "Add a Round", new_game_round_path(@game.id) %>
 <% end %>
+
+<%= link_to "Delete Game", game_path(@game.id),
+  method: :delete,
+  data: { confirm: 'Are you sure you want to delete this game?' },
+  class: "btn btn-outline-danger float-right"
+%></td>
