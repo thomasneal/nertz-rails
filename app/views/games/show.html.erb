@@ -4,9 +4,6 @@
     <%= @game.status %>
   </span>
 </p>
-<p>Game details</p>
-
-
 
 <table class="table table-striped">
   <tr>
@@ -20,7 +17,11 @@
     <tr>
       <td><%= i + 1 %></td>
       <% @game.users.each do |u| %>
-        <td><%= r.scores.find_by(user: u).value %></td>
+        <td><%= r.scores.find_by(user: u).value %>
+          <% if r.nertz_user_id == u.id %>
+            <span>N</span>
+          <% end %>
+        </td>
       <% end %>
       <td><%= link_to "X", game_round_path(@game.id, r.id),
         method: :delete,
@@ -41,7 +42,7 @@
 </table>
 
 <% if @game.status != "Finished" %>
-<%= link_to "Add a Round", new_game_round_path(@game.id) %>
+<%= link_to "Add a Round", new_game_round_path(@game.id), class: "btn btn-primary" %>
 <% end %>
 
 <%= link_to "Delete Game", game_path(@game.id),

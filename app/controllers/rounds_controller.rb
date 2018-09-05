@@ -60,7 +60,7 @@ class RoundsController < ApplicationController
 
       def round_params
          params.require(:round).
-            permit(scores_attributes: [:user_id, :value])
+            permit(:nertz_user_id, scores_attributes: [:user_id, :value])
       end
 
 end

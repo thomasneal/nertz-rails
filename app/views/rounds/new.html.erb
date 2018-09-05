@@ -8,8 +8,15 @@
         <%= s.hidden_field :user_id, value: u.id %>
       <% end %>
     </div>
-
   <% end %>
+  <div class="form-group">
+    <label>Who got Nertz?</label>
+    <%= f.select(:nertz_user_id, {}, {}, { class: "form-control"}) do %>
+      <% @game.users.each do |u| -%>
+        <%= content_tag(:option, u.name, value: u.id) %>
+      <% end %>
+    <% end %>
+  </div>
    <p>
       <%= f.submit class: "btn btn-primary" %>
    </p>
