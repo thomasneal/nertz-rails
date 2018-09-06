@@ -1,16 +1,14 @@
 <h1>Users</h1>
-
-
-<table class="table table-striped">
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-  </tr>
-  <% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
-  </tr>
-  <% end %>
-</table>
-<%= link_to "Add User", new_user_path, class: "btn btn-primary" %>
+<div class="row">
+<% @users.each do |u| %>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= u.name %></h5>
+        <p class="card-text"><%= u.email %></p>
+        <%= link_to "View details", user_path(u), class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
