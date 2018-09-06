@@ -1,11 +1,17 @@
 <h1>Games</h1>
 <table class="table table-striped">
+  <% if @games.any? %>
   <tr>
     <th>Game</th>
     <th>Users</th>
     <th>Status</th>
     <th>Actions</th>
   </tr>
+  <p>Games</p>
+  <% else %>
+  <p>No games. What are you waiting for?</p>
+  <% end %>
+
 <% @games.each do |game| %>
   <tr>
     <td><%= game.id %></td>
