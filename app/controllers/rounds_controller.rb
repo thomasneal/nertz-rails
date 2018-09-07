@@ -1,6 +1,7 @@
 class RoundsController < ApplicationController
   before_action :set_game
   before_action :authenticate_user!, :only => [:new, :edit, :create, :destroy]
+  before_action :authenticate_current_user, :only => [:new, :edit, :create, :destroy]
 
   def index
     @rounds = @game.rounds
@@ -62,6 +63,11 @@ class RoundsController < ApplicationController
       def round_params
          params.require(:round).
             permit(:nertz_user_id, scores_attributes: [:user_id, :value])
+      end
+
+      def authenticate_current_user
+        alert_text = 'You must be a player in this game to do that action.'
+        redirect_to '/', alert: alert_text unless @game.user_ids.include? current_user.id || authenticate_admin
       end
 
 end

@@ -4,8 +4,9 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def authenticate_admin
-   redirect_to '/', alert: 'You must be an administrator to perform this action.' unless current_user && admin_allowed
- end
+    alert_text = 'You must be an administrator to perform this action.'
+    redirect_to '/', alert: alert_text unless current_user && admin_allowed
+  end
 
   protected
 
