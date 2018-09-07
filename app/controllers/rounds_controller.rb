@@ -1,5 +1,6 @@
 class RoundsController < ApplicationController
   before_action :set_game
+  before_action :authenticate_user!, :only => [:new, :edit, :create, :destroy]
 
   def index
     @rounds = @game.rounds

@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  before_action :authenticate_admin, :only => [:new, :edit, :create, :destroy]
+
   def index
     @games = Game.all
   end

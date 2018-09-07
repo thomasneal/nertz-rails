@@ -9,4 +9,8 @@ class User < ApplicationRecord
   def to_s
      name
    end
+
+   def admin?
+     self.admin
+  end
 end
