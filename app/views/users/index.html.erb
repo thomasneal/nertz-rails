@@ -3,6 +3,11 @@
 <% @users.each do |u| %>
   <div class="col-sm-4">
     <div class="card">
+      <% if u.admin %>
+      <div class="card-label text-right">
+        <span class="badge badge-info">Admin</span>
+      </div>
+      <% end %>
       <div class="card-body">
         <h5 class="card-title"><%= u.name %></h5>
         <p class="card-text"><%= u.email %></p>
