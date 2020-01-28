@@ -8,7 +8,7 @@
 <table class="table table-striped">
   <tr>
     <th>Round</th>
-    <% @game.users.each do |u| %>
+    <% @game.ordered_users.each do |u| %>
       <th><%= u.name %></th>
     <% end %>
     <th>Actions</th>
@@ -16,7 +16,7 @@
     <% @game.rounds.each.with_index do |r,i| %>
     <tr>
       <td><%= i + 1 %></td>
-      <% @game.users.each do |u| %>
+      <% @game.ordered_users.each do |u| %>
         <td><%= r.scores.find_by(user: u).value %>
           <% if r.nertz_user_id == u.id %>
             <span>N</span>
@@ -33,7 +33,7 @@
     <% if @game.rounds.any? %>
     <tr class="total <%= @game.status.downcase %>">
       <td>Total</td>
-        <% @game.users.each do |u| %>
+        <% @game.ordered_users.each do |u| %>
           <td><%= @game.scores.where(user: u).pluck(:value).sum %></td>
         <% end %>
         <td></td>
